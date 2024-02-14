@@ -10,28 +10,19 @@ name: Build aarch64
 jobs:
   build:
     name: Build
-    runs-on: [self-hosted, macOS, ARM64]
+    runs-on: macos-14
     strategy:
       fail-fast: false
       matrix:
         target:
-          - x86_64-unknown-linux-gnu
-          - x86_64-unknown-linux-musl
-          - i686-unknown-linux-gnu
-          - i686-unknown-linux-musl
-          - aarch64-unknown-linux-gnu
-          - aarch64-unknown-linux-musl
           - armv7-unknown-linux-gnueabihf
           - armv7-unknown-linux-musleabihf
-          - arm-unknown-linux-gnueabi
-          - arm-unknown-linux-gnueabihf
-          - arm-unknown-linux-musleabihf
-          - mipsel-unknown-linux-gnu
     steps:
       - uses: actions/checkout@v3
       - name: Install crosstool-ng
         run: |
           brew install coreutils crosstool-ng
+          python3 --version
       - name: Mount volumes
         run: |
           set -ex
