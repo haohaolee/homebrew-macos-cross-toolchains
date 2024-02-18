@@ -15,8 +15,8 @@ jobs:
       fail-fast: false
       matrix:
         target:
-          - armv7-unknown-linux-gnueabihf
-          - armv7-unknown-linux-musleabihf
+          - x86_64-unknown-linux-gnu
+          - x86_64-unknown-linux-musl
     steps:
       - uses: actions/checkout@v3
       - name: Install crosstool-ng
@@ -40,7 +40,7 @@ jobs:
           set -ex
           mkdir /Volumes/build/src
           cd ${{ matrix.target }}
-          ct-ng build -j $(($(nproc) - 1))
+          MACOSX_DEPLOYMENT_TARGET=11.0 ct-ng build -j $(($(nproc) - 1))
       - name: Tail build.log on failure
         if: ${{ failure() }}
         run: tail -n 500 ${{ matrix.target }}/build.log
