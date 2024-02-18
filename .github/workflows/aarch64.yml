@@ -41,6 +41,13 @@ jobs:
           mkdir /Volumes/build/src
           cd ${{ matrix.target }}
           MACOSX_DEPLOYMENT_TARGET=11.0 ct-ng build -j $(($(nproc) - 1))
+      - name: upload build.log if failure
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: build_log
+          path: ${{ matrix.target }}/build.log
+          if-no-files-found: error
       - name: Tail build.log on failure
         if: ${{ failure() }}
         run: tail -n 500 ${{ matrix.target }}/build.log
