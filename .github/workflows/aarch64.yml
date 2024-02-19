@@ -40,7 +40,7 @@ jobs:
           set -ex
           mkdir /Volumes/build/src
           cd ${{ matrix.target }}
-          MACOSX_DEPLOYMENT_TARGET=11.0 ct-ng build -j $(($(nproc) - 1))
+          MACOSX_DEPLOYMENT_TARGET=11.0 CT_EXTRA_CFLAGS_FOR_BUILD="-Dstat64=stat" ct-ng build -j $(($(nproc) - 1))
       - name: Tail build.log on failure
         if: ${{ failure() }}
         run: tail -n 500 ${{ matrix.target }}/build.log
