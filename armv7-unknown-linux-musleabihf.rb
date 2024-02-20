@@ -1,21 +1,19 @@
 class Armv7UnknownLinuxMusleabihf < Formula
   desc "armv7 Linux MUSL eabihf Toolchain"
-  homepage "https://github.com/messense/homebrew-macos-cross-toolchains"
+  homepage "https://github.com/haohaolee/homebrew-macos-cross-toolchains"
   license "GPL-3.0-or-later" => { with: "GCC-exception-3.1" }
-  version "11.2.0"
-  revision 1
+  version "13.2.0"
 
-  depends_on "bdw-gc"
   depends_on "guile"
   depends_on "zstd"
-  depends_on "python@3.10"
+  depends_on "python@3.11"
 
   if Hardware::CPU.arm?
-    url "https://github.com/messense/homebrew-macos-cross-toolchains/releases/download/v11.2.0-1/armv7-unknown-linux-musleabihf-aarch64-darwin.tar.gz"
-    sha256 "cf2b9f8509297704e313e4191e7543c4dc6aff8b9239a878b86f3e7723a69315"
+    url "https://github.com/haohaolee/homebrew-macos-cross-toolchains/releases/download/v13.2.0/armv7-unknown-linux-musleabihf-aarch64-darwin.tar.gz"
+    sha256 "39917d32706c07d5b648263c73279ca8171b6d9d0288f678aed1d7e705d7deb1"
   else
-    url "https://github.com/messense/homebrew-macos-cross-toolchains/releases/download/v11.2.0-1/armv7-unknown-linux-musleabihf-x86_64-darwin.tar.gz"
-    sha256 "e5bccfcd5c2bd4abe2aa8d9a1f13fdda58cae6142b8570f04de3b87f26e77270"
+    url "https://github.com/haohaolee/homebrew-macos-cross-toolchains/releases/download/v13.2.0/armv7-unknown-linux-musleabihf-x86_64-darwin.tar.gz"
+    sha256 "75dba4f7844bd039cb84bec1a2aceed52bd0eed50462113fbc10401a6be3c2d8"
   end
 
   def install
