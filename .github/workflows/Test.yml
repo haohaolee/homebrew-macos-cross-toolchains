@@ -12,7 +12,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: brew tap
-        run: brew tap messense/macos-cross-toolchains
+        run: brew tap haohaolee/macos-cross-toolchains
       - name: brew install
         run: |
           brew install \
